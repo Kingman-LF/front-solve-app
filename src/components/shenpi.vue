@@ -61,6 +61,12 @@ export default {
           shenpirenyuan:'钱宁',shenpiTime:'2021-06-11 16:51:09',songshenfuyan:'请分流审批',shenhefuyan:'同意分流',shenhezhuangtai:'已审批'},
       ]
     }
+  },
+  mounted:{
+
+  },
+  methods:{
+
   }
 }
 </script>

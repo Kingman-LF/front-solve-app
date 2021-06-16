@@ -46,12 +46,18 @@
   </div>
 </template>
 <script>
+import {listDept} from "@/assets/api/index"
 export default {
   data() {
     return {
         showModal: false
     };
   },
+  mounted() {
+    listDept({tsProcessingDept: "湖州市",tsHandlingStatus:"办结已归档",page:'1',limit:"10"}).then(res => {
+      console.log(res)
+    })
+  }
 };
 </script>
 <style lang="scss" scoped>

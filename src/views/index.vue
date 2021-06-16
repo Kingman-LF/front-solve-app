@@ -10,7 +10,7 @@
     <!--审批记录-->
      <shenpi v-show="tabCur==1"></shenpi>
     <!-- 流转记录-->
-    <liuzhuan v-show="tabCur==2"></liuzhuan>
+    <liuzhuan v-show="tabCur==2" @click="liuzhuan"></liuzhuan>
     <!-- 查处结果反馈-->
     <resultFeedback v-show="tabCur==3"></resultFeedback>
       <!-- 回访信息-->
@@ -44,6 +44,9 @@ export default {
     Navtab(index) {
       this.tabCur = index
     },
+    liuzhuan(){
+      console.log();
+    }
   },
   components:{
     myHead,
