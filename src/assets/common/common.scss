@@ -1,0 +1,69 @@
+
+span,
+ul,
+li,
+i,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+table,
+tr,
+th,
+td,
+body,
+html {
+    margin: 0px;
+    padding: 0px;
+}
+
+li {
+    list-style: none;
+}
+
+a,
+span,
+i,
+button {
+    display: inline-block;
+}
+
+a {
+    text-decoration: none;
+}
+
+i {
+    font-style: normal;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.flex-row {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.mypadding {
+    padding: 0px 37px;
+    padding-top: 28px;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+.nocontent {
+    display: block;
+    width: 100%;
+}
+@font-face {
+    font-family: "HarmonyOS Sans SC Black";
+    src: url("~@/assets/fonts/HarmonyOS_Sans_SC_Black.ttf");
+}

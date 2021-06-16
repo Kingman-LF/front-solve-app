@@ -1,0 +1,79 @@
+{
+  "name": "hzapp",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve --open",
+    "build": "vue-cli-service build --mode production",
+    "build-test": "vue-cli-service build --mode test",
+    "build-dev": "vue-cli-service build --mode development",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@antv/f2": "^3.8.6",
+    "amfe-flexible": "^2.2.1",
+    "autoprefixer": "^10.2.6",
+    "axios": "^0.21.1",
+    "better-scroll": "^2.2.1",
+    "core-js": "^2.6.5",
+    "crypto": "^1.0.1",
+    "crypto-js": "^4.0.0",
+    "echarts": "^5.0.2",
+    "echarts-liquidfill": "^3.0.0",
+    "element": "^0.1.4",
+    "element-ui": "^2.15.1",
+    "lib-flexible": "^0.3.2",
+    "moment": "^2.29.1",
+    "postcss": "^8.3.0",
+    "postcss-px2rem-exclude": "0.0.6",
+    "vant": "^2.12.10",
+    "vue": "^2.6.10",
+    "vue-pdf": "^4.2.0",
+    "vue-router": "^3.0.3",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.5",
+    "@vue/cli-plugin-eslint": "^3.0.5",
+    "@vue/cli-service": "^4.5.13",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-import": "^1.13.3",
+    "crypto-js": "^4.0.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "node-sass": "^4.12.0",
+    "postcss-px2rem": "^0.3.0",
+    "postcss-pxtorem": "^6.0.0",
+    "sass-loader": "^8.0.0",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {},
+      "postcss-px2rem-exclude": {
+        "remUnit": 75,
+        "exclude": "/node_modules|floder_name/i"
+      }
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "Android >= 4.0",
+    "iOS >= 7",
+    "last 2 versions"
+  ]
+}

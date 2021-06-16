@@ -1,0 +1,8 @@
+# FROM registry.ispacesys.cn/cig/proxy:0.0.5-alpha
+# RUN mkdir  /app/www
+# COPY /  /app/www
+FROM registry.cn-beijing.aliyuncs.com/htzhpublic/nginx-163
+RUN rm /etc/nginx/conf.d/default.conf 
+RUN mkdir  /www
+ADD nginx.conf /etc/nginx/conf.d/
+COPY /  /www
