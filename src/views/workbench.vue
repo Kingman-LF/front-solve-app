@@ -6,7 +6,7 @@
       <img src="../assets/images/kj.png" alt="" />
     </div>
     <div class="box-item">
-      <div class="item">
+      <div class="item" @click="complaintMediation">
         <div class="title">
           <img src="../assets/images/pwdone.png" alt="" />
         </div>
@@ -24,7 +24,7 @@
         </div>
         <div class="txt">风险管控</div>
       </div>
-      <div class="item">
+      <div class="item" @click="publicOpinionMonitoring">
         <div class="title">
           <img src="../assets/images/pwdone.png" alt="" />
         </div>
@@ -46,19 +46,26 @@
   </div>
 </template>
 <script>
-import {listDept} from "@/assets/api/index"
-export default {
-  data() {
-    return {
-        showModal: false
-    };
-  },
-  mounted() {
-    listDept({tsProcessingDept: "湖州市",tsHandlingStatus:"办结已归档",page:'1',limit:"10"}).then(res => {
-      console.log(res)
-    })
-  }
-};
+export default{
+    data() {
+      return {
+          showModal: false
+      };
+    },
+    mounted() {
+
+    },
+    methods:{
+      //投诉列表
+      complaintMediation(){
+        this.$router.push('/complaintTiaochu');
+      },
+      //舆情监测
+      publicOpinionMonitoring(){
+        this.$router.push('/yuqingChuzhi');
+      }
+    }
+  };
 </script>
 <style lang="scss" scoped>
 .box {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="list-y">
+    <div class="list-y"  @click="publicOpinionDetails">
       <div class="y-title">2021中国文旅投资及民宿酒店展</div>
       <div class="title1">
         <span>钥城网-培训</span>
@@ -39,7 +39,12 @@
 
 <script>
 export default {
-  name: "yuqing"
+  name: "yuqing",
+  methods: {
+    publicOpinionDetails() {
+      this.$router.push('/yuqingXiangqing');
+    }
+  }
 }
 </script>
 

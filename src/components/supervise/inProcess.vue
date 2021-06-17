@@ -1,6 +1,6 @@
 <template>
   <div class="list">
-    <div class="list-item" v-for="(item,index) in unfinishedList" :key="index">
+    <div class="list-item" v-for="(item,index) in inprocessList" :key="index">
       <div class="item-num">登记编号：{{ item.tsRegister }}</div>
       <div class="item-detail-info">
         <div class="txt">类型：<span style="color: #0a57ff">{{ item.tsType }}</span></div>
@@ -14,7 +14,6 @@
       </div>
     </div>
 
-
   </div>
 </template>
 <script>
@@ -22,7 +21,7 @@ import {listDept} from '../../assets/api/index'
 export default{
   data(){
     return{
-      unfinishedList:[],
+      inprocessList:[],
       pageFlag:false,
       flag:true,
       limit:10,
@@ -30,28 +29,24 @@ export default{
     }
   },
   mounted(){
-    listDept({tsProcessingDept: "湖州市",tsHandlingStatus:"待办理",page:1,limit:10}).then(res => {
-      // console.log(res)
-      // this.unfinishedList = res.data;
+    listDept({tsProcessingDept: "湖州市",tsHandlingStatus:"处理中",page:'1',limit:"10"}).then(res => {
+      // console.log(res);
+      // this.inprocessList = res.data;
       //  滚动分页
-     if(res.code == 200){
-       //判断是否滚动触发
-       if(this.flag){
-         this.unfinishedList = this.unfinishedList.concat(res.data);
-         //小于每页限制的数量
-         if(res.count < this.limit){
-           this.pageFlag = true; //禁用滚动
-         }else{
-           this.pageFlag = false; // 启用
-         }
-       }else{
-         this.unfinishedList = res.data;
-         this.pageFlag = false;
-       }
-     }
+      if(res.code == 200){
+        if(this.flag){
+          this.inprocessList = this.inprocessList.concat(res.data);
+          if(res.count < this.limit){
+            this.pageFlag = true; // 禁用滚动
+          }else{
+            this.pageFlag = false; // 启用
+          }
+        }else{
+          this.inprocessList = res.data;
+          this.pageFlag = false;
+        }
+      }
     })
-  },
-  methods:{
 
   }
 }
