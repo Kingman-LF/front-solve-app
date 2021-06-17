@@ -29,7 +29,7 @@ import liuzhuan from '../components/liuzhuanjilu/liuzhuan'
 import timeline from './page/timeline'
 import returnInfo from './page/returnInfo'
 import resultFeedback from './page/resultFeedback'
-
+import {getComplaintlistDetails} from "@/assets/api/tousu"
 export default {
   name: "index",
   data(){
@@ -39,6 +39,11 @@ export default {
         '登记信息','审批记录','流转记录','查处结果反馈','回访信息','时间轴'
       ]
     }
+  },
+  mounted(){
+    getComplaintlistDetails({registration:"3305220000000202106111355"}).then(res => {
+        console.log(res)
+      })
   },
   methods:{
     Navtab(index) {
