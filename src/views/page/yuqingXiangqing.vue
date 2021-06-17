@@ -29,7 +29,7 @@
       </div>
     </div>
 
-    <div class="xq-btn">处置</div>
+    <div class="xq-btn" @click="management">处置</div>
   </div>
 </template>
 
@@ -39,6 +39,11 @@ export default {
   name: "yuqingXiangqing",
   components:{
     myHead,
+  },
+  methods:{
+    management(){
+      this.$router.push('/describe');
+    }
   }
 }
 </script>

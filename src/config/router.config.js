@@ -38,8 +38,14 @@ export const constantRouterMap = [
     },
     //舆情 事件描述 处置结果
     {
-        path:'/publicChuzhi',
-        name:'/publicChuzhi',
+        path:'/describe',
+        name:'/describe',
         component:() => import('../views/page/publicChuzhi'),
+    },
+    //   投诉列表
+    {
+        path:'/complaintTiaochu',
+        name:'/complaintTiaochu',
+        component:() => import('../views/page/complaintTiaochu'),
     },
 ]

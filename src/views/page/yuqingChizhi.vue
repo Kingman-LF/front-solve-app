@@ -5,11 +5,10 @@
       <div class="yuqingTit">
         <div class="yuqing-item" :class="{current:index==tabNum}" v-for="(item,index) in tabList" :key="index" @click="completedFn(index)">
           <span><img :src="require('@/assets/images/'+item.icon)" alt=""></span>
-<!--          <span><img :src="`../../assets/images/${item.icon}`" alt=""></span>-->
           <span>{{ item.tit }}</span>
         </div>
       </div>
-<!--      -->
+
       <div class="yuqing-list">
         <yuqing v-show="tabNum==0"></yuqing>
         <completed v-show="tabNum==1"></completed>
@@ -29,6 +28,7 @@ export default {
       tabNum:0,
       tabList:[
         {icon:'write.png',tit:'待处置'},
+        {icon:'write.png',tit:'办理中'},
         {icon:'yes.png',tit:'已办结'}
       ]
     }
@@ -48,6 +48,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  .current{
+    border-bottom:1px solid #0A57FF;
+    color:#0A57FF;
+  }
   .yuqing{
     width:100%;
     height:100%;
@@ -82,10 +86,6 @@ export default {
            }
          }
         }
-      }
-      .current:hover{
-          border-bottom:1px solid #0A57FF;
-          color:#0A57FF;
       }
     }
     .yuqing-list{

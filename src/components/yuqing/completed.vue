@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="list-y">
+    <div class="list-y" @click="detailsFn">
       <div class="y-title">万通发展：拟6.3亿元将北京万置60%股权转让给融汇嘉恒</div>
       <div class="title1">
         <span>中青看点</span>
@@ -39,7 +39,12 @@
 
 <script>
 export default {
-  name: "completed"
+  name: "completed",
+  methods:{
+    detailsFn(){
+      this.$router.push('/yuqingXiangqing');
+    }
+  }
 }
 </script>
 
