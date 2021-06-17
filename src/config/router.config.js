@@ -48,4 +48,10 @@ export const constantRouterMap = [
         name:'/complaintTiaochu',
         component:() => import('../views/page/complaintTiaochu'),
     },
+    //   纠纷列表
+    {
+        path:'/dispute',
+        name:'/dispute',
+        component:() => import('../views/page/dispute'),
+    },
 ]
