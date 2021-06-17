@@ -6,107 +6,17 @@
     </div>
     <div class="tsfBox">
       <div class="tsfInfo">
-        <div class="tsf">
+        <div class="tsf" v-for="(item,index) in tsfinfoArr" :key="index">
           <span class="line"></span>
-          <span class="type">姓名/名称:</span>
-          <span class="typeFont">程先生</span>
-        </div>
-        <div class="tsf">
-          <span class="line"></span>
-          <span class="type">联系电话:</span>
-          <span class="typeFont">&nbsp;&nbsp;13505676</span>
-        </div>
-        <div class="tsf">
-          <span class="line"></span>
-          <span class="type">通讯地址:</span>
-          <span class="typeFont"></span>
-        </div>
-        <div class="tsf">
-          <span class="line"></span>
-          <span class="type">事发地:</span>
-          <span class="typeFont"></span>
-        </div>
-        <div class="tsf">
-          <span class="line"></span>
-          <span class="type">事发时间:</span>
-          <span class="typeFont">2021-06-12</span>
-        </div>
-        <div class="tsf">
-          <span class="line"></span>
-          <span class="type">消费类型中类:</span>
-          <span class="typeFont">其他商品</span>
-        </div>
-        <div class="tsf">
-          <span class="line"></span>
-          <span class="type">消费类型小类:</span>
-          <span class="typeFont">其他商品</span>
-        </div>
-        <div class="tsf">
-          <span class="line"></span>
-          <span class="type">消费类型品种:</span>
-          <span class="typeFont">其他商品</span>
-        </div>
-        <div class="tsf">
-          <span class="line"></span>
-          <span class="type">投诉内容大类:</span>
-          <span class="typeFont">&nbsp;&nbsp;&nbsp;&nbsp;违反食品安全法规</span>
-        </div>
-        <div class="tsf">
-          <span class="line"></span>
-          <span class="type">投诉内容中类:</span>
-          <span class="typeFont">&nbsp;&nbsp;&nbsp;&nbsp;违反食品安全法规</span>
+          <span class="type">{{ item.tstype }}:</span>
+          <span class="typeFont">{{ item.typeName }}</span>
         </div>
       </div>
       <div class="tsfInfo">
-        <div class="tsf">
+        <div class="tsf" v-for="(item,index) in tsfinfoObj" :key="index">
           <span class="line"></span>
-          <span class="type">姓别:</span>
-          <span class="typeFont">男</span>
-        </div>
-        <div class="tsf">
-          <span class="line"></span>
-          <span class="type">投诉方身份:</span>
-          <span class="typeFont">城镇</span>
-        </div>
-        <div class="tsf">
-          <span class="line"></span>
-          <span class="type">投诉主体:</span>
-          <span class="typeFont">其他</span>
-        </div>
-        <div class="tsf">
-          <span class="line"></span>
-          <span class="type">关键字:</span>
-          <span class="typeFont"></span>
-        </div>
-        <div class="tsf">
-          <span class="line"></span>
-          <span class="type">消费方式:</span>
-          <span class="typeFont">实体店铺</span>
-        </div>
-        <div class="tsf">
-          <span class="line"></span>
-          <span class="type">是否预付式消费:</span>
-          <span class="typeFont">否</span>
-        </div>
-        <div class="tsf">
-          <span class="line"></span>
-          <span class="type">残疾人标志:</span>
-          <span class="typeFont">否</span>
-        </div>
-        <div class="tsf">
-          <span class="line"></span>
-          <span class="type">受理环节:</span>
-          <span class="typeFont">其他</span>
-        </div>
-        <div class="tsf">
-          <span class="line"></span>
-          <span class="type">是否长三角地区:</span>
-          <span class="typeFont">是</span>
-        </div>
-        <div class="tsf">
-          <span class="line"></span>
-          <span class="type">投诉内容小类:</span>
-          <span class="typeFont"></span>
+          <span class="type">{{ item.tsInfo }}:</span>
+          <span class="typeFont">{{ item.tsfInfo }}</span>
         </div>
       </div>
     </div>
@@ -124,8 +34,47 @@
 </template>
 
 <script>
+import { getComplaintlistDetails } from '../../assets/api/tousu'
 export default {
-  name: "tsfInfo"
+  name: "tsfInfo",
+  data(){
+    return{
+      tsfinfoArr:[],
+      tsfinfoObj:[],
+    }
+  },
+  mounted() {
+    getComplaintlistDetails({registration:"3305220000000202106111355"}).then(res => {
+      console.log(res)
+      let tsfinfoList = res.data.register;
+      let obj = [
+        {tstype:'姓名/名称',typeName:tsfinfoList.tsName},
+        {tstype:'联系电话',typeName:tsfinfoList.tsContact},
+        {tstype:'通讯地址',typeName:tsfinfoList.tsDesign},
+        {tstype:'事发地',typeName:tsfinfoList.tsIncident},
+        {tstype:'事发时间',typeName:tsfinfoList.tsRegistrationtime},
+        {tstype:'消费类型中类',typeName:tsfinfoList.tsMiddleclass},
+        {tstype:'消费类型小类',typeName:tsfinfoList.tsSubclass},
+        {tstype:'消费类型品种',typeName:tsfinfoList.tsVarieties},
+        {tstype:'投诉内容大类',typeName:tsfinfoList.tsContent},
+        {tstype:'投诉内容中类',typeName:tsfinfoList.tsContent},
+      ]
+      let obj1 = [
+        // {tsInfo:'性别',tsfInfo:tsfinfoList},
+        // {tsInfo:'投诉方身份',tsfInfo:tsfinfoList},
+        // {tsInfo:'投诉主体',tsfInfo:tsfinfoList},
+        // {tsInfo:'关键字',tsfInfo:tsfinfoList},
+        // {tsInfo:'消费方式',tsfInfo:tsfinfoList},
+        // {tsInfo:'是否预付式消费',tsfInfo:tsfinfoList},
+        // {tsInfo:'残疾人标志',tsfInfo:tsfinfoList},
+        // {tsInfo:'受理环节',tsfInfo:tsfinfoList},
+        // {tsInfo:'是否长三角地区',tsfInfo:tsfinfoList},
+        // {tsInfo:'投诉内容小类',tsfInfo:tsfinfoList},
+      ]
+      this.tsfinfoArr = obj;
+      this.tsfinfoObj = obj1;
+    })
+  }
 }
 </script>
 
@@ -194,10 +143,14 @@ export default {
       border-radius: 2px;
       margin-right:4px;
     }
-	.typeFont{
-		margin-left:27px;
-    margin-right:32px;
-	}
+    .typeFont{
+      margin-left:27px;
+      margin-right:32px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+    }
   }
 }
 </style>

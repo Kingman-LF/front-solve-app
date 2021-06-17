@@ -5,48 +5,40 @@
       <span>系统信息</span>
     </div>
     <div class="xtInfo">
-      <div class="xt">
+      <div class="xt" v-for="(item,index) in xtArr" :key="index">
         <span class="line"></span>
-        <span class="type">职能:</span>
-        <span class="typeFont">食品</span>
-      </div>
-      <div class="xt">
-        <span class="line"></span>
-        <span class="type">信息来源:</span>
-        <span class="typeFont">&nbsp;&nbsp;12315中心</span>
-      </div>
-      <div class="xt">
-        <span class="line"></span>
-        <span class="type">接收方式:</span>
-        <span class="typeFont">&nbsp;&nbsp;电话</span>
-      </div>
-      <div class="xt">
-        <span class="line"></span>
-        <span class="type">受理登记人:</span>
-        <span class="typeFont">&nbsp;&nbsp;钱宁</span>
-      </div>
-      <div class="xt">
-        <span class="line"></span>
-        <span class="type">登记时间:</span>
-        <span class="typeFont">2021-06-12</span>
-      </div>
-      <div class="xt">
-        <span class="line"></span>
-        <span class="type">登记编号:</span>
-        <span class="typeFont">330522</span>
-      </div>
-      <div class="xt">
-        <span class="line"></span>
-        <span class="type">登记部门:</span>
-        <span class="typeFont">&nbsp;&nbsp;&nbsp;&nbsp;德清县消保分局</span>
+        <span class="type">{{ item.type }}:</span>
+        <span class="typeFont">{{ item.typeName }}</span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { getComplaintlistDetails } from '../../assets/api/tousu'
 export default {
-  name: "xt"
+  name: "xt",
+  data(){
+    return{
+      xtArr:[],
+    }
+  },
+  mounted(){
+    getComplaintlistDetails({registration:"3305220000000202106111355"}).then(res => {
+      // console.log(res)
+      let registerList = res.data.register
+      let obj = [
+        {type:'职能',typeName:registerList.tsFunction},
+        {type:'信息来源',typeName:registerList.tsInformation},
+        {type:'接收方式',typeName:registerList.tsAcceptance},
+        {type:'受理登记人',typeName:registerList.tsAcceptances},
+        {type:'登记时间',typeName:registerList.tsDepartment},
+        {type:'登记编号',typeName:registerList.tsIncidenttime},
+        {type:'登记部门',typeName:registerList.tsRegistration}
+      ]
+      this.xtArr = obj;
+    })
+  }
 }
 </script>
 

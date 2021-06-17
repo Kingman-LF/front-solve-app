@@ -29,7 +29,6 @@ import liuzhuan from '../components/liuzhuanjilu/liuzhuan'
 import timeline from './page/timeline'
 import returnInfo from './page/returnInfo'
 import resultFeedback from './page/resultFeedback'
-import {getComplaintlistDetails} from "@/assets/api/tousu"
 export default {
   name: "index",
   data(){
@@ -41,9 +40,7 @@ export default {
     }
   },
   mounted(){
-    getComplaintlistDetails({registration:"3305220000000202106111355"}).then(res => {
-        console.log(res)
-      })
+
   },
   methods:{
     Navtab(index) {
@@ -81,7 +78,6 @@ li{
   width:100%;
   height:100%;
   background:url('../assets/images/bg.png') no-repeat;
-  text-align: center;
   .navigation {
     width: 100%;
     height: 170px;
@@ -92,6 +88,7 @@ li{
     justify-content: flex-start;
     align-content: space-around;
     margin-bottom: 20px;
+    text-align: center;
     .nav-item {
       width: 20%;
       height: 44px;

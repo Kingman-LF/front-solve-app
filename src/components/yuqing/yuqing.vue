@@ -75,6 +75,10 @@ export default {
       }
     }
     .neirong{
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+      overflow: hidden;
       font-size:18px;
     }
   }
